@@ -24,9 +24,9 @@
 
       <el-main height="">
         <el-row :gutter="20">
-          <el-col :xs="0" :sm="5" :md="5" :lg="5" :xl="5"> </el-col>
+          <el-col :xs="0" :sm="0" :md="0" :lg="0" :xl="0"> </el-col>
 
-          <el-col :xs="16" :sm="16" :md="16" :lg="16" :xl="14">
+          <el-col :xs="16" :sm="18" :md="18" :lg="18" :xl="18">
             <el-tree
               :data="xaction.Steps"
               :props="defaultProps"
@@ -46,7 +46,7 @@
             </el-tree>
           </el-col>
 
-          <el-col :xs="0" :sm="5" :md="5" :lg="5" :xl="5">
+          <el-col :xs="0" :sm="6" :md="6" :lg="6" :xl="6">
             <el-table :data="xaction.Variables" size="mini">
               <el-table-column label="变量名" width="150">
                 <template v-slot="{ row }">
