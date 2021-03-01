@@ -23,10 +23,10 @@
       </el-header>
 
       <el-main height="">
-        <el-row :gutter="20">
+        <el-row :gutter="10">
           <el-col :xs="0" :sm="0" :md="0" :lg="0" :xl="0"> </el-col>
 
-          <el-col :xs="16" :sm="18" :md="18" :lg="18" :xl="18">
+          <el-col :xs="24" :sm="18" :md="18" :lg="18" :xl="18">
             <el-tree
               :data="xaction.Steps"
               :props="defaultProps"
@@ -35,20 +35,23 @@
               v-loading="loading"
               empty-text="没有正在编辑的动作，请点击加载"
             >
-              <span
-                class="custom-tree-node"
-                slot-scope="{ node, data }"
-                @dblclick="editPanel(data)"
-              >
-                <span class="stepName">{{ stepNameDict[node.label] }}</span>
-                <span class="stepNote">{{ data.Note }}</span>
-              </span>
+              <template v-slot="{ node, data }">
+                <span class="custom-tree-node" @dblclick="editPanel(data)">
+                  <span>
+                    <span class="stepName">{{ stepNameDict[node.label] }}</span>
+                    <span class="stepNote">{{ data.Note }}</span>
+                  </span>
+                  <el-button type="text" size="small" @click="editPanel(data)"
+                    ><i class="el-icon-edit">编辑</i
+                  ></el-button>
+                </span>
+              </template>
             </el-tree>
           </el-col>
 
           <el-col :xs="0" :sm="6" :md="6" :lg="6" :xl="6">
             <el-table :data="xaction.Variables" size="mini">
-              <el-table-column label="变量名" width="150">
+              <el-table-column label="变量名">
                 <template v-slot="{ row }">
                   <var-show-item :variable="row"></var-show-item>
                 </template>
@@ -93,10 +96,10 @@ export default {
       stepNameDict: stepNameDict,
       editingStep: {},
       showStepEditor: false,
-      action:
-        "",
+      action: "",
       loading: false,
-      userInput: "https://getquicker.net/sharedaction?code=ca4f5811-1a94-4c9e-c8bc-08d8642b4c39"
+      userInput:
+        "https://getquicker.net/sharedaction?code=ca4f5811-1a94-4c9e-c8bc-08d8642b4c39",
     };
   },
   methods: {
@@ -105,7 +108,7 @@ export default {
         this.$cmessage({
           message: "输入的链接/ID格式不正确",
           type: "warning",
-          offset: 50
+          offset: 50,
         });
         return;
       }
@@ -160,17 +163,16 @@ export default {
     },
   },
   created() {
-    this.$cmessage = function(obj){
+    this.$cmessage = function (obj) {
       obj.offset = 50;
       obj.duration = 1200;
       this.$message(obj);
-    }
+    };
   },
 };
 </script>
 
 <style>
-
 span.stepNote {
   color: burlywood;
   font-size: small;
@@ -182,11 +184,12 @@ span.stepNote {
 }
 
 .custom-tree-node {
-  /* flex: 1;
+  flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between; */
+  justify-content: space-between;
   font-size: 14px;
   padding-right: 8px;
+  width: 90%;
 }
 </style>

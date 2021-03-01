@@ -29,4 +29,8 @@ export default {
   position: relative;
   top: 0.2em;
 }
+
+span {
+  font-size: 12px;
+}
 </style>
