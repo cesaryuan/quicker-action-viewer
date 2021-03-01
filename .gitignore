@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 .DS_Store
 node_modules
-/dist
-
 
 # local env files
 .env.local
@@ -22,7 +19,6 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
-=======
 # Logs
 logs
 *.log
@@ -103,4 +99,3 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
->>>>>>> 706354df4063f0efa62c1fa00b875c174185da01
